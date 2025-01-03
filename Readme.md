@@ -108,7 +108,7 @@ Here’s an overview of the main database models:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Sourav0010/videotube-backend.git
+   git clone https://github.com/prathmeshladkat/tweetube-backend.git
    cd youtube-backend
    ```
 
