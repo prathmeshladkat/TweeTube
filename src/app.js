@@ -1,27 +1,39 @@
-import express from "express";
-import cors from "cors";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+import express from "express";
+import userRouter from "./routes/user.route.js";
+import videoRouter from "./routes/video.route.js";
+import subscriptionRouter from "./routes/subscription.route.js";
+import twitterRouter from "./routes/tweet.route.js";
+import playlistRouter from "./routes/playlist.route.js";
+import commentRouter from "./routes/comment.route.js";
+import likeRouter from "./routes/like.route.js";
 
 const app = express();
 
-//cors document exploration
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: "*",
     credentials: true,
   })
 );
 
-//limit of json daa
-app.use(express.json({ limit: "16kb" }));
-app.use(express.urlencoded({ extended: true, limit: "16kb" }));
-app.use(express.static("public"));
 app.use(cookieParser());
+app.use(
+  express.urlencoded({
+    extended: true,
+    limit: "16kb",
+  })
+);
+app.use(express.static("public"));
+app.use(express.json());
 
-//routes import
-import userRouter from "./routes/user.routes.js";
-
-//router declaration
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/subscriptions", subscriptionRouter);
+app.use("/api/v1/videos", videoRouter);
+app.use("/api/v1/tweets", twitterRouter);
+app.use("/api/v1/playlists", playlistRouter);
+app.use("/api/v1/comments", commentRouter);
+app.use("/api/v1/likes", likeRouter);
 
-export { app };
+export default app;
