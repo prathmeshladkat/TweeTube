@@ -1,4 +1,4 @@
-# videotube-backend
+# Tweetube-backend
 
 A backend service built with Node.js, Express, and MongoDB. This project provides an API for managing users, videos, playlists, comments, likes, subscriptions, and tweets.
 
